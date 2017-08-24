@@ -1,0 +1,51 @@
+#: init/iis-service.js
+msgid "IIS task"
+msgstr "Tarea de IIS"
+
+#: init/iis-service.js
+msgid "No server selected"
+msgstr "Ningún servidor seleccionado"
+
+#: init/iis-service.js
+msgid "No option selected"
+msgstr "Ninguna opción seleccionada"
+
+#: init/iis-service.js
+msgid "Starting IIS task"
+msgstr "Comenzando tarea de IIS"
+
+#: init/iis-service.js
+msgid "IIS task finished"
+msgstr "Tarea de IIS finalizada"
+
+#: public/form/iis-service-form.js
+msgid "Server"
+msgstr "Servidor"
+
+#: public/form/iis-service-form.js
+msgid "Command"
+msgstr "Comando"
+
+#: public/form/iis-service-form.js
+msgid "Start IIS"
+msgstr "Iniciar IIS"
+
+#: public/form/iis-service-form.js
+msgid "Stop IIS"
+msgstr "Parar IIS"
+
+#: public/form/iis-service-form.js
+msgid "Restart IIS"
+msgstr "Reinicar IIS"
+
+#: public/form/iis-service-form.js
+msgid "Check IIS status"
+msgstr "Comprobar estado de IIS"
+
+#: public/form/iis-service-form.js
+msgid "Custom command"
+msgstr "Comando personalizado"
+
+#: public/form/iis-service-form.js
+msgid "Custom commands or arguments"
+msgstr "Comandos personalizados o argumentos"
