@@ -4,7 +4,7 @@
 
     var iisServerCombo = Cla.ui.ciCombo({
         name: 'iisServer',
-        class: 'generic_server',
+        role: 'Server',
         fieldLabel: _('Server'),
         value: data.iisServer || '',
         allowBlank: false,
