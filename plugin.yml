@@ -1,4 +1,4 @@
-name: Clarive IIS Plugin
+name: IIS Plugin
 description: IIS plugin will allow you to launch IIS commands for your web servers from a Clarive instance.
 version: 1.0
 icon: https://cdn.rawgit.com/clarive/cla-iis-plugin/master/public/icon/iis.svg?sanitize=true
