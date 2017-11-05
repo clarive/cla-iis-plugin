@@ -1,5 +1,6 @@
-
 # IIS plugin
+
+<img src="https://cdn.rawgit.com/clarive/cla-iis-plugin/master/public/icon/iis.svg?sanitize=true" alt="IIS Plugin" title="IIS Plugin" width="120" height="120">
 
 IIS plugin will allow you to launch IIS commands for your web servers from a Clarive instance.
 
@@ -10,51 +11,98 @@ IIS supports HTTP, HTTPS, FTP, FTPS, SMTP and NNTP.
 
 ## Requirements
 
-IIS is needed in order for it to work properly.
+IIS is needed in the server in order for it to work properly.
 
 ## Installation
 
-To install the plugin, place the cla-iis-plugin folder inside the `CLARIVE_BASE/plugins`
+To install the plugin, place the cla-iis-plugin folder inside the `$CLARIVE_BASE/plugins`
 directory in a Clarive instance.
 
-## How to use
+### IIS task
 
-Once the plugin is correctly installed and the Clarive instance is restarted, you will have a new palette service called 'IIS task'.
+The various parameters are:
 
-### IIS task service:
+- **Server (variable name: iis_server)** - Choose the server where you wish to execute the command.
+- **User (user)** - User which will be used to connect to the server.
+- **Command (command)** - Here you will have different commands to launch with the service or write a custom one.
+   - **Start IIS ("/start")** - Starts IIS service.
+   - **Stop IIS ("/stop")** - Stops IIS service.
+   - **Restart IIS ("/restart")** - Restarts IIS service.
+   - **Check IIS status ("/status")** - Check IIS service status.
+   - **Custom command ("custom")** - Write custom command.
+- **Custom command or arguments (custom_args)** -Here you can write arguments for the selected command or write the commands you want to perform.
 
-This palette service will let you choose the option that you wish to perform with IIS.
-The various parameters from the palette service are:
+**Only Clarive EE**
 
-- **Server** - Choose the server where you wish to execute the code.
-- **Command** - Here you will have different commands to launch with the service or write a custom one.
-- **Custom command or arguments** -Here you can write arguments for the selected command or write the commands you want to perform.
 - **Errors and output** - These two fields are related to manage control errors. Options are:
    - **Fail and output error** - Search for configurated error pattern in script output. If found, an error message is displayed in monitor showing the match.
-   - **Warn and output warn** - Search for configurated warning pattern in script output. If found, an error message is displayed in monitor showing the match.,
+   - **Warn and output warn** - Search for configurated warning pattern in script output. If found, an error message is displayed in monitor showing the match.
    - **Custom** - In case combo box errors is set to custom a new form is showed to define the behavior with these fields:
    - **OK** - Range of return code values for the script to have succeeded. No message will be displayed in monitor.
    - **Warn** - Range of return code values to warn the user. A warn message will be displayed in monitor.
    - **Error** - Range of return code values for the script to have failed. An error message will be displayed in monitor.
 
+## How to use
 
-Configuration example:
+### In Clarive EE
 
+Once the plugin is placed in its folder, you can find this service in the palette in the section of generic service and can be used like any other palette op.
+
+Op Name: **IIS task**
+
+Example:
+
+```yaml
     Server: IIS-Server
     Command: Custom
     Custom command or arguments: /restart
-    Errors: fail
+``` 
+
+### In Clarive SE
+
+#### Rulebook
+
+If you want to use the plugin through the Rulebook, in any `do` block, use this ops as examples to configure the different parameters:
+
+Example:
+
+```yaml
+do:
+   - iis_task:
+       iis_server: 'build'     # Required. Use the mid set to the resource you created
+       user: 'clarive_user'
+       command: "custom"       # Required   
+       custom_args: ["/restart"]
+``` 
+
+##### Outputs
+
+###### Success
 
 The service will return the console output for the command.
 
-## Variables:
+###### Possible configuration failures
 
-In order to use some comboboxes or texfields options from some services, you will need to use variables created in the Variable Resource from Clarive so you can use them more time on an easier way than repeating it every time.
+**Task failed**
 
-There are different Variables types (value, CI, textArea, array, etc), all of the in the Resource Variable. The CI type is usefull for the ciComboBoxes, as you will not be able to manually write them into the combobox, but yes in the texfields.
+You will get the error from the console output.
 
-The CI variable should be created with the following parameters:
+**Variable required**
 
-- **Type -** CI. 
-- **CI Role -** Select the Role of the CI class you have in the comboBox. 
-- **CI CLASS -** Select the specific CI Class it will use, usually the same class as the comboBox where you want to make it appear.
+```yaml
+Error in rulebook (compile): Required argument(s) missing for op "iis_task": "command"
+```
+
+Make sure you have all required variables defined.
+
+**Not allowed variable**
+
+```yaml
+Error in rulebook (compile): Argument `User` not available for op "iis_task"
+```
+
+Make sure you are using the correct paramaters (make sure you are writing the variable names correctly).
+
+## More questions?
+
+Feel free to join **[Clarive Community](https://community.clarive.com/)** to resolve any of your doubts.
