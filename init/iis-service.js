@@ -26,18 +26,24 @@ reg.register('service.iis.task', {
 
         var reg = require('cla/reg');
         var fs = require('cla/fs');
+        var ci = require('cla/ci');
         var log = require('cla/log');
 
         var server = params.iisServer;
-        var path = params.path;
         var errors = params.errors || 'fail';
-        var command = params.command;
+        var command = params.command || "";
         var customParams = params.custom;
         var user = params.user || "";
         var fullCommand = "";
 
         if (server == "") {
             log.fatal(_("No server selected"));
+        }
+        var serverCheck = ci.findOne({
+            mid: server + ''
+        });
+        if (!serverCheck){
+            log.fatal(_("Server Resource doesn't exist"));
         }
 
         function remoteCommand(params, command, server, errors, user) {
