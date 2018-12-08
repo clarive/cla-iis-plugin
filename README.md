@@ -1,6 +1,6 @@
 # IIS plugin
 
-<img src="https://cdn.rawgit.com/clarive/cla-iis-plugin/master/public/icon/iis.svg?sanitize=true" alt="IIS Plugin" title="IIS Plugin" width="120" height="120">
+<img src="https://cdn.jsdelivr.net/gh/clarive/cla-iis-plugin/public/icon/iis.svg?sanitize=true" alt="IIS Plugin" title="IIS Plugin" width="120" height="120">
 
 IIS plugin will allow you to launch IIS commands for your web servers from a Clarive instance.
 
